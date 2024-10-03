@@ -1,23 +1,37 @@
 import React, { useState } from 'react';
 import './Chat.css'; // Import Chat-specific styles
+import axios from 'axios';
 
 const Chat = () => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Append the user message to the message list
-    setMessages([...messages, { sender: 'user', content: message }]);
+    // Append the user's message to the chat
+    const userMessage = { sender: 'user', content: message };
+    setMessages(prevMessages => [...prevMessages, userMessage]);
 
-    // Mock assistant response (in practice, you'd use API call)
-    setMessages(prevMessages => [
-      ...prevMessages, 
-      { sender: 'assistant', content: 'This is a response from the assistant.' }
-    ]);
+    try {
+      // Send the user's message to the Flask backend
+      const res = await axios.post('http://localhost:5000/chat', {
+        message: message
+      });
 
-    setMessage('');  // Clear input
+      // Append the response from the assistant to the chat
+      const assistantMessage = { sender: 'assistant', content: res.data.response };
+      setMessages(prevMessages => [...prevMessages, assistantMessage]);
+    } catch (error) {
+      console.error("Error fetching response:", error);
+
+      // If there's an error, append a mock response for the assistant
+      const errorMessage = { sender: 'assistant', content: 'Sorry, I am unable to respond right now.' };
+      setMessages(prevMessages => [...prevMessages, errorMessage]);
+    }
+
+    // Clear the input
+    setMessage('');
   };
 
   return (
