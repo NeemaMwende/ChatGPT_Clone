@@ -1,15 +1,15 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import openai
 import os
 from dotenv import load_dotenv
-from flask_cors import CORS
 
 # Load environment variables from .env file
 load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__)
-CORS(app)
+CORS(app)  # Enable CORS to allow cross-origin requests from React
 
 # Read API key from environment variable
 API_KEY = os.getenv("OPENAI_API_KEY")
