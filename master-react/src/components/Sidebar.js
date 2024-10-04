@@ -29,15 +29,22 @@ const Sidebar = ({ conversations = [], onSelectConversation }) => {
             </li>
           ))
         ) : (
-          <li>No conversations yet</li>
+          <button>No conversations yet</button>
         )}
       </ul>
 
-      <h2>Settings</h2>
-      <ul className="settings-list">
-        <li>Theme</li>
-        <li>Account</li>
-      </ul>
+        <div className='bottom'>
+          <div className='one'>
+            <h2>Settings</h2>
+          </div>
+          <div className='two'> 
+          <div className="settings-list">
+              <button>Theme</button>
+              <button>Account</button>
+          </div>
+          </div>             
+        </div>
+     
     </div>
   );
 };

@@ -1,5 +1,5 @@
 .sidebar {
-  flex: 1;
+  flex: 0.5; 
   padding: 20px;
   background-color: #f1f1f1;
 }
@@ -10,19 +10,49 @@
   padding: 0;
 }
 
-.history-list li {
-  margin-bottom: 10px;
+.history-list button {
+  /* margin-bottom: 10px;
+  cursor: pointer; */
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #333;
+  background-color: transparent;
+  border: 1px solid #333;
+  border-radius: 10px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.history-list li:hover {
-  text-decoration: underline;
+.history-list button:hover {
+  /* text-decoration: underline; */
+  background-color: #5a5151;
+  color: white;
+  border-color: #333;
+
 }
 
-.settings-list li {
-  margin-top: 20px;
+.settings-list button {
+  display:block;
+  width: 12rem;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #333;
+  background-color: transparent;
+  border: 1px solid #333;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
 }
 
-.settings-list li:hover {
-  text-decoration: underline;
+.settings-list button:hover {
+  background-color: #5a5151;
+  color: white;
+  border-color: #333;
+
+} 
+
+.bottom{
+  margin-top: 22rem;
 }
