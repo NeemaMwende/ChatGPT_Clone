@@ -39,6 +39,7 @@ textarea {
   flex-grow: 1.5;
   margin-right: 10px;
   border-radius: 10px;
+  height: 6rem;
 }
 
 button {
@@ -52,5 +53,5 @@ button {
   height: 3rem;
 }
 button:hover{
-  background-color: #4a6dbd;
+  background-color: #103da7;
 }
