@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 import Sidebar from './components/Sidebar';
 import Chat from './components/Chat';
@@ -19,23 +20,29 @@ function App() {
   };
 
   return (
-    <div className="app-container">
-      <Header user={user} onLogout={handleLogout} /> {/* Pass the user object and logout handler */}
-
-      <div className="main-content">
-        {isAuthenticated ? (
-          <>
-            <Sidebar />
-            <Chat />
-          </>
-        ) : (
-          <>
-            <Login onLogin={handleLogin} /> {/* Pass the login handler */}
-            <Register />
-          </>
-        )}
+    <Router>
+      <div className="app-container">
+        <Header user={user} onLogout={handleLogout} /> {/* Pass the user object and logout handler */}
+        
+        <div className="main-content">
+          <Routes>
+            {/* Redirect to login if not authenticated */}
+            {isAuthenticated ? (
+              <>
+                <Route path="/chat" element={<><Sidebar /><Chat /></>} />
+                <Route path="/" element={<Navigate to="/chat" />} /> {/* Redirect to chat */}
+              </>
+            ) : (
+              <>
+                <Route path="/login" element={<Login onLogin={handleLogin} />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/" element={<Navigate to="/login" />} /> {/* Redirect to login */}
+              </>
+            )}
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
