@@ -29,7 +29,7 @@ const Sidebar = ({ conversations = [], onSelectConversation }) => {
             </li>
           ))
         ) : (
-          <button>No conversations yet</button>
+          <button>Start Chat</button>
         )}
       </ul>
 

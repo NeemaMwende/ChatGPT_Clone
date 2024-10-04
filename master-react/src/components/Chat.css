@@ -36,8 +36,9 @@
 }
 
 textarea {
-  flex-grow: 1;
+  flex-grow: 1.5;
   margin-right: 10px;
+  border-radius: 10px;
 }
 
 button {
@@ -46,4 +47,10 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+  border-radius: 20px;
+  width: 9rem;
+  height: 3rem;
+}
+button:hover{
+  background-color: #4a6dbd;
 }
