@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from flask_mysql.connector import MySQL
+from flask_mysqldb import MySQL
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import openai
@@ -22,7 +22,7 @@ openai.api_key = API_KEY
 app.config['MYSQL_HOST'] = os.getenv("MYSQL_HOST")
 app.config['MYSQL_USER'] = os.getenv("MYSQL_USER")
 app.config['MYSQL_PASSWORD'] = os.getenv("MYSQL_PASSWORD")
-app.config['MYSQL_DATABASE'] = os.getenv("MYSQL_DATABASE")  # Make sure this database exists
+app.config['MYSQL_DB'] = os.getenv("MYSQL_DATABASE")  # Make sure this database exists
 mysql = MySQL(app)
 
 # Initialize Bcrypt and Flask-Login

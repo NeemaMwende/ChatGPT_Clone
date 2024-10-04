@@ -29,7 +29,7 @@ function App() {
           <Routes>
             <Route
               path="/login"
-              element={isAuthenticated ? <Navigate to="/chat" /> : <Login onLogin={handleLogin} />} 
+              element={isAuthenticated ? <Navigate to="/chat" /> : <Login onLogin={handleLogin} />}
             />
             <Route path="/register" element={<Register />} />
             <Route 
