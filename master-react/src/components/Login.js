@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { login } from './authService'; // Import the auth service
-import './Login.css'; // Import the CSS
-import { Link } from 'react-router-dom';
+import './Login.css';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Login = ({ onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate(); // Create navigate hook for redirection
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await login(username, password);
-            alert('Login successful');
-            onLogin(); // Call the login handler after successful login
+            await login(username, password); // Assuming login is an async function
+            onLogin(); // Show the "Login successful" alert
+            navigate('/chat'); // Redirect to chat area
         } catch (error) {
             alert('Login failed');
         }
