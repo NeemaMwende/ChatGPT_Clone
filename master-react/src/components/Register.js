@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Register.css'; // Import CSS styles
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -70,7 +71,7 @@ const Register = () => {
                 <button type="submit">Register</button>
 
                 <div className="register-footer">
-                    <p>Already have an account? <a href="windows.location.">Login</a></p>
+                    <p>Already have an account? <Link to="/login">Login</Link></p>
                 </div>
             </form>
         </div>

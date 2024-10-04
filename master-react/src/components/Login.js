@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { login } from './authService'; // Import the auth service
-import './Login.css'
+import './Login.css'; // Import the CSS
+import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -11,29 +12,40 @@ const Login = () => {
         try {
             await login(username, password);
             alert('Login successful');
+            onLogin(); // Call the login handler after successful login
         } catch (error) {
             alert('Login failed');
         }
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-            />
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-            />
-            <button type="submit">Login</button>
-        </form>
+        <div className="login-container">
+            <form className="login-form" onSubmit={handleSubmit}>
+                <h2>Login</h2>
+                <label htmlFor="username">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter your username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                />
+                <label htmlFor="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                <button type="submit">Login</button>
+                <div className="login-footer">
+                    <p>Don't have an account? <Link to="/register">Register here</Link></p>
+                </div>
+            </form>
+        </div>
     );
 };
 
