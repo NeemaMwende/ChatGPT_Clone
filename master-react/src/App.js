@@ -4,7 +4,7 @@ import Chat from './components/Chat';
 import Header from './components/Header';
 
 function App() {
-  const user = { profilePicture: 'path/to/user/picture.jpg' }; // Example user object
+  const user = { profilePicture: '../src/components/logo.png' }; // Example user object
 
   return (
     <div className="app-container">
