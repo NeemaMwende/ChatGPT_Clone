@@ -1,27 +1,28 @@
 .sidebar {
-    width: 250px;
-    background-color: #f4f4f4;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    overflow-y: auto;
-  }
-  
-  .sidebar h2 {
-    margin-top: 0;
-  }
-  
-  .history-list, .settings-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .history-list li, .settings-list li {
-    padding: 10px 0;
-    cursor: pointer;
-  }
-  
-  .history-list li:hover, .settings-list li:hover {
-    background-color: #ddd;
-    border-radius: 5px;
-  }
-  
+  flex: 1;
+  padding: 20px;
+  background-color: #f1f1f1;
+}
+
+.history-list,
+.settings-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.history-list li {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.history-list li:hover {
+  text-decoration: underline;
+}
+
+.settings-list li {
+  margin-top: 20px;
+}
+
+.settings-list li:hover {
+  text-decoration: underline;
+}
