@@ -2,17 +2,22 @@ from flask import Flask, render_template, redirect, url_for, flash, request
 from flask_mysql.connector import MySQL
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Initialize the Flask application
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Change this to a random secret key
+app.secret_key = os.getenv('SECRET_KEY')  # Get the secret key from the .env file
 
 # Initialize MySQL
 mysql = MySQL(app)
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'your_mysql_user'  # Change this
-app.config['MYSQL_PASSWORD'] = 'your_mysql_password'  # Change this
-app.config['MYSQL_DATABASE'] = 'flask_auth'
+app.config['MYSQL_HOST'] = os.getenv('MYSQL_HOST')
+app.config['MYSQL_USER'] = os.getenv('MYSQL_USER')
+app.config['MYSQL_PASSWORD'] = os.getenv('MYSQL_PASSWORD')
+app.config['MYSQL_DATABASE'] = os.getenv('MYSQL_DATABASE')
 
 # Initialize Bcrypt
 bcrypt = Bcrypt(app)

@@ -39,7 +39,7 @@ const Sidebar = ({ conversations = [], onSelectConversation }) => {
           </div>
           <div className='two'> 
           <div className="settings-list">
-              <button>Theme</button>
+              {/* <button>Theme</button> */}
               <button>Account</button>
           </div>
           </div>             

@@ -3,6 +3,7 @@ import { login } from './authService'; // Import the auth service
 import './Login.css';
 import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 
 const Login = ({ onLogin }) => {
     const [username, setUsername] = useState('');
@@ -45,9 +46,10 @@ const Login = ({ onLogin }) => {
                 <button type="submit">Login</button>
                 <br></br>
                  {/* Google login button */}
-                    <GoogleLogin
+                    <GoogleLogin className="google"
                         onSuccess={credentialResponse => {
-                            console.log(credentialResponse);
+                            const decoded = jwtDecode(credentialResponse?.credential)
+                            console.log(credentialResponse);  
                             onLogin(); 
                         }}
                         onError={() => {

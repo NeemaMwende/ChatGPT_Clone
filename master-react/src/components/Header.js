@@ -22,13 +22,14 @@ const Header = ({ user = {} }) => { // Default to an empty object
           src={user.profilePicture || {image}} // Fallback to a default image
           alt="Profile"
           className="profile-picture"
-        />
+        /> *
+        {/* <button>welcome {props.userid}</button> */}
         {dropdownVisible && (
           <div className="dropdown">
             <ul>
               <li>Settings</li>
               <li>Models</li>
-              <li>Themes</li>
+              <li>Billings</li>
               <li onClick={handleLogout}>Logout</li>
             </ul>
           </div>

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './Register.css'; // Import CSS styles
 import { Link } from 'react-router-dom';
+// import { GoogleLogin } from '@react-oauth/google';
+// import { jwtDecode } from "jwt-decode";
+
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -73,6 +76,18 @@ const Register = () => {
                 <div className="register-footer">
                     <p>Already have an account? <Link to="/login">Login</Link></p>
                 </div>
+
+                {/* Google login button */}
+                {/* <GoogleLogin className="google"
+                        onSuccess={credentialResponse => {
+                            const decoded = jwtDecode(credentialResponse?.credential)
+                            console.log(credentialResponse);  
+                            onRegister(); 
+                        }}
+                        onError={() => {
+                            console.log('Google Login Failed');
+                        }}
+                    /> */}
             </form>
         </div>
     );
